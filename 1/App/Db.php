@@ -15,7 +15,7 @@ class Db
 
     }
 
-    public function query($sql, $data, $class): array
+    public function query($sql, $class, $data = []): array
     {
         $sth = $this->dbh->prepare($sql);
         $sth->execute($data);

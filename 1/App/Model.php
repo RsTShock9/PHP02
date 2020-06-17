@@ -13,24 +13,24 @@ abstract class Model
     {
         $db = new Db();
         $sql = 'SELECT * FROM ' . static::TABLE;
-        return $db->query($sql, [], static::class);
+        return $db->query($sql,static::class);
     }
 
     public static function findById($id)
     {
         $db = new Db();
         $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE :id=id';
-        $data = $db->query($sql, [':id' => $id], static::class);
+        $data = $db->query($sql, static::class, [':id' => $id]);
         if (!empty($data)) {
             return $data[0];
         }
         return false;
     }
 
-    public static function lastThree(): array
+    public static function getLastRecords(int $limit): array
     {
         $db = new Db();
-        $sql = 'SELECT * FROM ' . static::TABLE . ' ORDER BY id DESC LIMIT 3';
-        return $db->query($sql, [], static::class);
+        $sql = 'SELECT * FROM ' . static::TABLE . ' ORDER BY id DESC LIMIT ' . $limit;
+        return $db->query($sql, static::class);
     }
 }
