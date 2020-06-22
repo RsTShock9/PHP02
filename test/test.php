@@ -34,6 +34,6 @@ $article = Article::findById($id);
 var_dump($article);
 
 //получение последних трех записей
-$lastThree = Article::lastThree();
+$lastThree = Article::getLastRecords(3);
 var_dump($lastThree);
 

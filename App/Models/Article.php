@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Model;
-use App\Models;
 
 class Article extends Model
 {

@@ -4,7 +4,6 @@ namespace App;
 
 class Db
 {
-
     protected \PDO $dbh;
 
     public function __construct()

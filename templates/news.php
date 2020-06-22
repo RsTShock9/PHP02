@@ -11,7 +11,7 @@
 <h2>Новости:</h2>
 <?php foreach ($lastThree as $article) { ?>
     <div>
-        <a href="/1/article.php?id=<?php echo $article->id; ?>"><?php echo $article->title; ?></a><br>
+        <a href="article.php?id=<?php echo $article->id; ?>"><?php echo $article->title; ?></a><br>
         <?php echo $article->content; ?><br>
         Автор статьи: <?php echo $article->author; ?><br><br>
     </div>
