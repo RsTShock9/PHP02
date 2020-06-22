@@ -8,10 +8,9 @@ class Db
 
     public function __construct()
     {
-        $config = include __DIR__ . '/../config.php';
-        $data = $this->dbh = new \PDO('pgsql:host=' . $config['host'] . ';dbname=' . $config['dbname'],
-            $config['user'], $config['password']);
-
+        $config = Config::instance();
+        $this->dbh = new \PDO('pgsql:host=' . $config->data['db']['host'] . ';dbname=' . $config->data['db']['dbname'],
+            $config->data['db']['user'], $config->data['db']['password']);
     }
 
     public function query($sql, $class, $data = []): array
@@ -21,9 +20,14 @@ class Db
         return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
     }
 
-    public function execute($query, $params = []) :bool
+    public function execute($query, $params = []): bool
     {
         $sth = $this->dbh->prepare($query);
-        return $sth->execute();
+        return $sth->execute($params);
+    }
+
+    public function lastId(): string
+    {
+        return $this->dbh->lastInsertId();
     }
 }

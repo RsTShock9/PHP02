@@ -1,8 +1,11 @@
 <?php
 
-return [
-    'host'     => 'localhost',
-    'dbname'   => 'news',
-    'user'     => 'postgres',
-    'password' => 'postgres',
-];
+return
+    ['db' =>
+         [
+             'host'     => 'localhost',
+             'dbname'   => 'news',
+             'user'     => 'postgres',
+             'password' => 'postgres',
+         ],
+    ];
