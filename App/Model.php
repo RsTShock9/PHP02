@@ -7,6 +7,9 @@ abstract class Model
     protected const TABLE = '';
     public int $id;
 
+    /**
+     * @return array возвращает массив объектов класса
+     */
     public static function findAll(): array
     {
         $db = new Db();
@@ -14,6 +17,10 @@ abstract class Model
         return $db->query($sql, static::class);
     }
 
+    /**
+     * @param $id
+     * @return object|mixed возвращает одну запись из таблицы
+     */
     public static function findById($id)
     {
         $db = new Db();
@@ -25,6 +32,10 @@ abstract class Model
         return false;
     }
 
+    /**
+     * @param int $limit
+     * @return array возвращает массив объектов из заданного количества записей по полю id
+     */
     public static function getLastRecords(int $limit): array
     {
         $db = new Db();
@@ -32,6 +43,9 @@ abstract class Model
         return $db->query($sql, static::class);
     }
 
+    /**
+     * Вставляет запись в базу данных
+     */
     public function insert()
     {
         $props = get_object_vars($this);
@@ -50,6 +64,9 @@ abstract class Model
         $this->id = $db->lastId();
     }
 
+    /**
+     * Обновляет запись в базе данных
+     */
     public function update()
     {
         $props = get_object_vars($this);
@@ -67,6 +84,9 @@ abstract class Model
         $db->execute($sql, $data);
     }
 
+    /**
+     * Удаляет запись в базе данных
+     */
     public function delete()
     {
         $data = [':id' => $this->id];
@@ -75,6 +95,9 @@ abstract class Model
         $db->execute($sql, $data);
     }
 
+    /**
+     * Если есть данный id, метод обновит запись в базе данных, если нет - создаст новую
+     */
     public function save()
     {
         if (isset($this->id)) {

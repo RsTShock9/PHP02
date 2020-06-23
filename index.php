@@ -3,7 +3,9 @@
 require __DIR__ . '/autoload.php';
 
 use \App\Models\Article;
+use \App\View\View;
 
-$lastThree = Article::getLastRecords(4);
+$view = new View();
 
-include __DIR__ . '/templates/news.php';
+$view->articles = Article::getLastRecords(4);
+$view->display(__DIR__ . '/templates/news.php');

@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/templates/css/style.css">
     <title>AdminPanel</title>
 </head>
 <body>
@@ -14,14 +14,20 @@
     <form action="/admin/insertArticle.php" method="post">
         Название:<br><input type="text" name="title" size="120"><br>
         Текст:<br><input type="text" name="content" size="120"><br>
-        Автор:<br><input type="text" name="author" size="120"><br><br>
+        Автор:<br><select name="author_id">
+            <option value="1">Станислав Иванейко</option>
+            <option value="2">Никита Мелкозеров</option>
+            <option value="3">Татьяна Ошуркевич</option>
+            <option value="4">Андрей Рудь</option>
+            <option value="5">Виталий Олехнович</option>
+        </select><br><br>
         <button type="submit">Добавить</button>
         <br><br><br>
     </form>
 </div>
 
 <table>
-    <?php foreach ($news as $article) { ?>
+    <?php foreach ($this->articles as $article): ?>
         <tr>
             <td>
                 <a href="/admin/article.php?id=<?php echo $article->id; ?>">Редактировать</a>
@@ -34,7 +40,7 @@
                 <hr>
             </td>
         </tr>
-    <?php } ?>
+    <?php endforeach; ?>
 </table>
 
 </body>

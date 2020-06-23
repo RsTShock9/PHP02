@@ -3,8 +3,8 @@
 require __DIR__ . '/autoload.php';
 
 use \App\Models\Article;
+use \App\View\View;
 
-$id = $_GET['id'];
-$article = Article::findById($id);
-
-include __DIR__ . '/templates/article.php';
+$view = new View();
+$view->article = Article::findById($_GET['id']);
+$view->display(__DIR__ . '/templates/article.php');
