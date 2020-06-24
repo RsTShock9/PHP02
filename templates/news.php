@@ -11,16 +11,17 @@
 <body>
 <h2>Новости:</h2>
 
-    <div>
-        <?php foreach ($this->articles as $article): ?>
+<div>
+    <?php foreach ($this->articles as $article): ?>
         <div class="news">
-        <h4><a href="/article.php?id=<?php echo $article->id; ?>">
-            <?php echo $article->title; ?></a></h4>
-        <?php echo $article->content; ?><br><br>
-        Автор статьи: <?php echo $article->author->name; ?><br>
+            <h4><a href="/article.php?id=<?php echo $article->id; ?>">
+                    <?php echo $article->title; ?></a></h4>
+            <?php echo $article->content; ?><br><br>
+            Автор статьи: <?php echo $article->author->name; ?><br><br>
         </div>
-        <?php endforeach; ?>
-    </div><br>
+    <?php endforeach; ?>
+</div>
+<br>
 
 <a href="/admin/index.php">Админ-панель</a>
 

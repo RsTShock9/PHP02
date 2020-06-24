@@ -8,7 +8,7 @@ use \App\View\View;
 $article = Article::findById(3);
 var_dump(isset($article->author));
 
-$view = new \App\View\View();
+$view = new View();
 $view->article = Article::getLastRecords(4);
 $view->articles = Article::findAll();
 var_dump(count($view->article));
@@ -20,8 +20,7 @@ $view->__set('1', 'первый');
 $view->__set('2', 'второй');
 $view->__set('3', 'третий');
 
-foreach ($view as $key => $val)
-{
+foreach ($view as $key => $val) {
     echo $key . ':' . $val . "\n";
 }
 
