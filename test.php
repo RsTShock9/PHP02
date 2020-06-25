@@ -3,7 +3,7 @@
 require __DIR__ . '/autoload.php';
 
 use \App\Models\Article;
-use \App\View\View;
+use \App\View;
 
 $article = Article::findById(3);
 var_dump(isset($article->author));

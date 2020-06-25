@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View;
+namespace App;
 
 class View implements \Countable, \Iterator
 {
