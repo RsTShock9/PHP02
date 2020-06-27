@@ -2,10 +2,23 @@
 
 require __DIR__ . '/autoload.php';
 
-use \App\Models\Article;
-use \App\View;
+use \App\Controllers\Index;
 
-$view = new View();
+$uri = $_SERVER['REQUEST_URI'];
+$request = explode('/', $uri);
 
-$view->articles = Article::getLastRecords(4);
-$view->display(__DIR__ . '/templates/news.php');
+if (isset($request[2])) {
+    $ctrl2 = ucfirst($request[2]);
+    $class = '\\App\Controllers\\' . $ctrl2;
+} else {
+    $ctrl1 = $request[1] ? ucfirst($request[1]) : 'Index';
+    $class = '\\App\Controllers\\' . $ctrl1;
+}
+
+if (file_exists(__DIR__ . $class . '.php')) {
+    $ctrl = new $class;
+} else {
+    $ctrl = new Index();
+}
+
+$ctrl->action();
