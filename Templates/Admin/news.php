@@ -5,13 +5,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="/templates/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/Templates/css/style.css">
     <title>AdminPanel</title>
 </head>
 <body>
 <div>
     <h2>Добавить новость</h2>
-    <form action="/admin/insertArticle.php" method="post">
+    <form action="/admin/insert" method="post">
         Название:<br><input type="text" name="title" size="120"><br>
         Текст:<br><input type="text" name="content" size="120"><br>
         Автор:<br><select name="author_id">
@@ -28,8 +28,8 @@
     <?php foreach ($this->articles as $article): ?>
         <tr>
             <td>
-                <a href="/admin/article.php?id=<?php echo $article->id; ?>">Редактировать</a>
-                <a href="/admin/deleteArticle.php?id=<?php echo $article->id; ?>">Удалить</a>
+                <a href="/admin/article/?id=<?php echo $article->id; ?>">Редактировать</a>
+                <a href="/admin/delete/?id=<?php echo $article->id; ?>">Удалить</a>
             </td>
         </tr>
         <tr>

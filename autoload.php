@@ -1,6 +1,8 @@
 <?php
 
 spl_autoload_register(static function ($class) {
-    require __DIR__ . '/' . str_replace('\\', '/', $class) . '.php';
-}
-);
+    $file = __DIR__ . '/' . str_replace('\\', '/', $class) . '.php';
+    if (file_exists($file)) {
+        require __DIR__ . '/' . str_replace('\\', '/', $class) . '.php';
+    }
+});
