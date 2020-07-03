@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Exceptions\ValidationErrors;
 use App\Model;
 
 class Article extends Model
@@ -35,5 +36,35 @@ class Article extends Model
             return true;
         }
         return false;
+    }
+
+    public function validateTitle($title)
+    {
+        if (strlen($title) > 100) {
+            throw new ValidationErrors('Заголовок должен быть не более 100 символов');
+        }
+        if (empty($title)) {
+            throw new ValidationErrors('Заголовок не должен быть пустым');
+        }
+        if (!ctype_upper($title)) {
+            throw new ValidationErrors('Заголовок должен начинаться с большой буквы');
+        }
+        return $title;
+    }
+
+    public function validateContent($content)
+    {
+        if (empty($content)) {
+            throw new ValidationErrors('Текст статьи не должен быть пустым');
+        }
+        return $content;
+    }
+
+    public function validateAuthor_id($author_id)
+    {
+        if (!ctype_digit($author_id)) {
+            throw new ValidationErrors('id автора должно быть числом');
+        }
+        return $author_id;
     }
 }

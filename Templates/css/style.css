@@ -14,3 +14,8 @@ a {
 .news {
     border: black 1px solid;
 }
+
+.error {
+    margin-top: 10%;
+    margin-left: 20%;
+}

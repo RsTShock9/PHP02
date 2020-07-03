@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Exceptions\DbException;
+
 class Db
 {
     protected \PDO $dbh;
@@ -9,14 +11,22 @@ class Db
     public function __construct()
     {
         $config = Config::instance();
-        $this->dbh = new \PDO('pgsql:host=' . $config->data['db']['host'] . ';dbname=' . $config->data['db']['dbname'],
-            $config->data['db']['user'], $config->data['db']['password']);
+        try {
+            $this->dbh = new \PDO('pgsql:host=' . $config->data['db']['host'] . ';dbname=' .
+                $config->data['db']['dbname'], $config->data['db']['user'], $config->data['db']['password']);
+        } catch (\PDOException $ex) {
+            throw new DbException('Ошибка соединения с базой данных');
+        }
     }
 
     public function query($sql, $class, $data = []): array
     {
         $sth = $this->dbh->prepare($sql);
         $sth->execute($data);
+        $result = $sth->execute($data);
+        if ($result == false) {
+            throw new DbException('Ошибка запроса ' . $sql);
+        }
         return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
     }
 

@@ -9,6 +9,8 @@
     <title>AdminPanel</title>
 </head>
 <body>
+
+<a href="/index">Перейти на главную страницу сайта</a><br>
 <div>
     <h2>Добавить новость</h2>
     <form action="/admin/insert" method="post">

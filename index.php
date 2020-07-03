@@ -3,6 +3,9 @@
 require __DIR__ . '/autoload.php';
 
 use \App\Controllers\Index;
+use \App\Exceptions\DbException;
+use \App\Exceptions\NotFound404;
+use \App\Controllers\Error;
 
 $uri = $_SERVER['REQUEST_URI'];
 $request = explode('/', $uri);
@@ -21,4 +24,12 @@ if (file_exists(__DIR__ . $class . '.php')) {
     $ctrl = new Index();
 }
 
-$ctrl->action();
+try {
+    $ctrl->action();
+} catch (DbException $error) {
+    $ctrl = new Error($error);
+    $ctrl->action();
+} catch (NotFound404 $error) {
+    $ctrl = new Error($error);
+    $ctrl->action();
+}
