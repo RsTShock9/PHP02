@@ -2,10 +2,35 @@
 
 namespace App;
 
+use App\Exceptions\MultiExceptions;
+use App\Exceptions\ValidationErrors;
+
 abstract class Model
 {
     protected const TABLE = '';
     public int $id;
+
+    public function fill($data)
+    {
+        $errors = new MultiExceptions;
+
+        foreach ($data as $name => $value) {
+            try {
+                if ('id' == $name) {
+                    continue;
+                }
+                $methodName = 'validate' . ucfirst($name);
+                if ($this->$methodName($value)) {
+                    $this->$name = $value;
+                }
+            } catch (ValidationErrors $e) {
+                $errors->addError($e);
+            }
+        }
+        if (count($errors) > 0) {
+            throw $errors;
+        }
+    }
 
     /**
      * @return array возвращает массив объектов класса
@@ -60,7 +85,7 @@ abstract class Model
         $sql = 'INSERT INTO ' . static::TABLE . ' (' . implode(',', $columns) . ') 
         VALUES (' . implode(',', $bindings) . ')';
         $db = new Db();
-        $db->execute($sql, $data);
+        $a = $db->execute($sql, $data);
         $this->id = $db->lastId();
     }
 

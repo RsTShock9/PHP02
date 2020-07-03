@@ -1,0 +1,33 @@
+
+ 
+[2020-07-04 15:20:00] 
+App\Exceptions\MultiExceptions in E:\PHP\PHP\OpenServer\domains\php2\App\Model.php:15
+Stack trace:
+#0 E:\PHP\PHP\OpenServer\domains\php2\App\Controllers\Admin\Insert.php(13): App\Model->fill()
+#1 E:\PHP\PHP\OpenServer\domains\php2\App\BaseController.php(22): App\Controllers\Admin\Insert->__invoke()
+#2 E:\PHP\PHP\OpenServer\domains\php2\Admin\index.php(31): App\BaseController->action()
+#3 {main}
+ 
+[2020-07-04 15:20:03] 
+App\Exceptions\MultiExceptions in E:\PHP\PHP\OpenServer\domains\php2\App\Model.php:15
+Stack trace:
+#0 E:\PHP\PHP\OpenServer\domains\php2\App\Controllers\Admin\Insert.php(13): App\Model->fill()
+#1 E:\PHP\PHP\OpenServer\domains\php2\App\BaseController.php(22): App\Controllers\Admin\Insert->__invoke()
+#2 E:\PHP\PHP\OpenServer\domains\php2\Admin\index.php(31): App\BaseController->action()
+#3 {main}
+ 
+[2020-07-04 15:26:17] 
+App\Exceptions\MultiExceptions in E:\PHP\PHP\OpenServer\domains\php2\App\Model.php:15
+Stack trace:
+#0 E:\PHP\PHP\OpenServer\domains\php2\App\Controllers\Admin\Insert.php(13): App\Model->fill()
+#1 E:\PHP\PHP\OpenServer\domains\php2\App\BaseController.php(22): App\Controllers\Admin\Insert->__invoke()
+#2 E:\PHP\PHP\OpenServer\domains\php2\Admin\index.php(32): App\BaseController->action()
+#3 {main}
+ 
+[2020-07-04 15:29:03] 
+App\Exceptions\MultiExceptions in E:\PHP\PHP\OpenServer\domains\php2\App\Model.php:15
+Stack trace:
+#0 E:\PHP\PHP\OpenServer\domains\php2\App\Controllers\Admin\Update.php(13): App\Model->fill()
+#1 E:\PHP\PHP\OpenServer\domains\php2\App\BaseController.php(22): App\Controllers\Admin\Update->__invoke()
+#2 E:\PHP\PHP\OpenServer\domains\php2\Admin\index.php(32): App\BaseController->action()
+#3 {main}

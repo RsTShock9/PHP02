@@ -3,6 +3,11 @@
 require __DIR__ . '/../autoload.php';
 
 use \App\Controllers\Admin\Index;
+use \App\Exceptions\MultiExceptions;
+use \App\Controllers\Admin\Errors;
+use \App\Exceptions\NotFound404;
+use \App\Exceptions\DbException;
+use \App\Controllers\Error;
 
 $uri = $_SERVER['REQUEST_URI'];
 $request = explode('/', $uri);
@@ -23,4 +28,15 @@ if (class_exists($class)) {
     $ctrl = new Index();
 }
 
-$ctrl->action();
+try {
+    $ctrl->action();
+} catch (MultiExceptions $error) {
+    $ctrl = new Errors($error);
+    $ctrl->action();
+} catch (DbException $error) {
+    $ctrl = new Error($error);
+    $ctrl->action();
+} catch (NotFound404 $error) {
+    $ctrl = new Error($error);
+    $ctrl->action();
+}
