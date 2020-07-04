@@ -18,9 +18,10 @@
         Название:<br><input type="text" name="title" size="120"><br>
         Текст:<br><input type="text" name="content" size="120"><br>
         Автор:<br><select name="author_id">
-            <?php foreach ($this->authors as $author) { ?>
-                <option value="<?php echo $author->id; ?>"><?php echo $author->name; ?></option>
-            <?php } ?>
+            <?php foreach ($this->authors as $author) : ?>
+                <option value="<?php echo $author->id; ?>">
+                    <?php echo $author->name; ?></option>
+            <?php endforeach; ?>
         </select><br><br>
         <button type="submit" value="<?php $this->article->id; ?>">Редактировать</button>
         <br><br><br>

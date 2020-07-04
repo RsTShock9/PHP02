@@ -23,4 +23,3 @@ $view->__set('3', 'третий');
 foreach ($view as $key => $val) {
     echo $key . ':' . $val . "\n";
 }
-

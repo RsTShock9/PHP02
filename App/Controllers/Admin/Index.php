@@ -17,7 +17,7 @@ class Index extends BaseController
 
     protected function access(): bool
     {
-        if (isset($_GET['role']) == 'admin'){
+        if (isset($_GET['role']) == 'admin') {
             return true;
         }
         die('Нет прав доступа');

@@ -12,11 +12,11 @@
 
 <div class="error">
     <h2>Возникла ошибка:</h2>
-    <? foreach ($this->errors->getErrors() as $error) { ?>
+    <?php foreach ($this->errors->getErrors() as $error) : ?>
         <div>
             <?php echo $error->getMessage(); ?><br>
         </div>
-    <?php } ?>
+    <?php endforeach ?>
 
     <br><a href="/admin/index/?role=admin">Перейти на главную страницу админ-панели</a>
 </div>

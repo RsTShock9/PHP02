@@ -6,17 +6,16 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="/Templates/css/style.css">
-    <title>Ошибки</title>
+    <title>Исключения</title>
 </head>
 <body>
 
 <div class="error">
     <h2>Возникла ошибка:</h2>
     <div>
-        <?php
-        if (!empty($this->error)) {
+        <?php if (!empty($this->error)) :
             echo $this->error->getMessage();
-        } ?>
+        endif; ?>
     </div>
 
     <br><a href="/index">Перейти на главную страницу</a>
