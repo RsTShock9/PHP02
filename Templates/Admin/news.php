@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="/Templates/css/style.css">
-    <title>AdminPanel</title>
+    <title>Админ-панель</title>
 </head>
 <body>
 
@@ -18,7 +18,8 @@
         Текст:<br><input type="text" name="content" size="120"><br>
         Автор:<br><select name="author_id">
             <?php foreach ($this->authors as $author) { ?>
-                <option value="<?php echo $author->id; ?>"><?php echo $author->name; ?></option>
+                <option value="<?php echo $author->id; ?>">
+                    <?php echo $author->name; ?></option>
             <?php } ?>
         </select><br><br>
         <button type="submit">Добавить</button>
@@ -27,7 +28,7 @@
 </div>
 
 <table>
-    <?php foreach ($this->articles as $article): ?>
+    <?php foreach ($this->articles as $article) : ?>
         <tr>
             <td>
                 <a href="/admin/article/?id=<?php echo $article->id; ?>">Редактировать</a>

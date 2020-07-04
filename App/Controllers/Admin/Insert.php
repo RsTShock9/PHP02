@@ -12,7 +12,6 @@ class Insert extends BaseController
         $this->view->article = new Article();
         $this->view->article->fill($_POST);
         $this->view->article->save();
-
         header('Location: /admin/index/?role=admin');
         exit();
     }
