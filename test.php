@@ -1,9 +1,9 @@
 <?php
 
-require __DIR__ . '/autoload.php';
+require __DIR__.'/autoload.php';
 
-use \App\Models\Article;
-use \App\View;
+use App\Models\Article;
+use App\View;
 
 $article = Article::findById(3);
 var_dump(isset($article->author));
@@ -21,5 +21,5 @@ $view->__set('2', 'второй');
 $view->__set('3', 'третий');
 
 foreach ($view as $key => $val) {
-    echo $key . ':' . $val . "\n";
+    echo $key.':'.$val."\n";
 }

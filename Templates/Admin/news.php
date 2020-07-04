@@ -28,7 +28,7 @@
 </div>
 
 <table>
-    <?php foreach ($this->articles as $article) : ?>
+    <?php foreach ($this->articles as $article) { ?>
         <tr>
             <td>
                 <a href="/admin/article/?id=<?php echo $article->id; ?>">Редактировать</a>
@@ -41,7 +41,7 @@
                 <hr>
             </td>
         </tr>
-    <?php endforeach; ?>
+    <?php } ?>
 </table>
 
 </body>

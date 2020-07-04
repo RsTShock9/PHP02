@@ -15,6 +15,7 @@ class Article extends Model
 
     /**
      * @param string $name
+     *
      * @return Author|bool возвращает запись из таблицы authors по id, как объект класса Author
      */
     public function __get(string $name)
@@ -22,19 +23,22 @@ class Article extends Model
         if (!empty($this->author_id) && ('author' == $name)) {
             return Author::findById($this->author_id);
         }
+
         return null;
     }
 
     /**
      * @param string $name
+     *
      * @return bool метод вызывается при использовании isset или empty на несуществующем свойстве
-     * author, возвращает true или false
+     *              author, возвращает true или false
      */
     public function __isset(string $name): bool
     {
         if (!empty($this->author_id) && ('author' == $name)) {
             return true;
         }
+
         return false;
     }
 
@@ -49,6 +53,7 @@ class Article extends Model
         if (!ctype_upper($title)) {
             throw new ValidationErrors('Заголовок должен начинаться с большой буквы');
         }
+
         return $title;
     }
 
@@ -57,6 +62,7 @@ class Article extends Model
         if (empty($content)) {
             throw new ValidationErrors('Текст статьи не должен быть пустым');
         }
+
         return $content;
     }
 
@@ -65,6 +71,7 @@ class Article extends Model
         if (!ctype_digit($author_id)) {
             throw new ValidationErrors('id автора должно быть числом');
         }
+
         return $author_id;
     }
 }

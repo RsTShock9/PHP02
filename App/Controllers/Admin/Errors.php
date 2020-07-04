@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Admin;
 
-use \App\BaseController;
+use App\BaseController;
 use App\Logger;
 
 class Errors extends BaseController
@@ -19,6 +19,6 @@ class Errors extends BaseController
     {
         Logger::logsAdmin($this->messages);
         $this->view->errors = $this->messages;
-        $this->view->display(__DIR__ . '/../../../Templates/Admin/errors.php');
+        $this->view->display(__DIR__.'/../../../Templates/Admin/errors.php');
     }
 }

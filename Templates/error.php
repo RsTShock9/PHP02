@@ -13,9 +13,9 @@
 <div class="error">
     <h2>Возникла ошибка:</h2>
     <div>
-        <?php if (!empty($this->error)) :
-            echo $this->error->getMessage();
-        endif; ?>
+        <?php if (!empty($this->error)) {
+    echo $this->error->getMessage();
+} ?>
     </div>
 
     <br><a href="/index">Перейти на главную страницу</a>

@@ -12,14 +12,14 @@ abstract class Model
 
     public function fill($data)
     {
-        $errors = new MultiExceptions;
+        $errors = new MultiExceptions();
 
         foreach ($data as $name => $value) {
             try {
                 if ('id' == $name) {
                     continue;
                 }
-                $methodName = 'validate' . ucfirst($name);
+                $methodName = 'validate'.ucfirst($name);
                 if ($this->$methodName($value)) {
                     $this->$name = $value;
                 }
@@ -38,38 +38,43 @@ abstract class Model
     public static function findAll(): array
     {
         $db = new Db();
-        $sql = 'SELECT * FROM ' . static::TABLE . ' ORDER BY id';
+        $sql = 'SELECT * FROM '.static::TABLE.' ORDER BY id';
+
         return $db->query($sql, static::class);
     }
 
     /**
      * @param $id
+     *
      * @return object|mixed возвращает одну запись из таблицы
      */
     public static function findById($id)
     {
         $db = new Db();
-        $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE :id=id';
+        $sql = 'SELECT * FROM '.static::TABLE.' WHERE :id=id';
         $data = $db->query($sql, static::class, [':id' => $id]);
         if (!empty($data)) {
             return $data[0];
         }
+
         return false;
     }
 
     /**
      * @param int $limit
+     *
      * @return array возвращает массив объектов из заданного количества записей по полю id
      */
     public static function getLastRecords(int $limit): array
     {
         $db = new Db();
-        $sql = 'SELECT * FROM ' . static::TABLE . ' ORDER BY id DESC LIMIT ' . $limit;
+        $sql = 'SELECT * FROM '.static::TABLE.' ORDER BY id DESC LIMIT '.$limit;
+
         return $db->query($sql, static::class);
     }
 
     /**
-     * Вставляет запись в базу данных
+     * Вставляет запись в базу данных.
      */
     public function insert()
     {
@@ -79,18 +84,18 @@ abstract class Model
         $data = [];
         foreach ($props as $name => $value) {
             $columns[] = $name;
-            $bindings[] = ':' . $name;
-            $data[':' . $name] = $value;
+            $bindings[] = ':'.$name;
+            $data[':'.$name] = $value;
         }
-        $sql = 'INSERT INTO ' . static::TABLE . ' (' . implode(',', $columns) . ') 
-        VALUES (' . implode(',', $bindings) . ')';
+        $sql = 'INSERT INTO '.static::TABLE.' ('.implode(',', $columns).') 
+        VALUES ('.implode(',', $bindings).')';
         $db = new Db();
         $a = $db->execute($sql, $data);
         $this->id = $db->lastId();
     }
 
     /**
-     * Обновляет запись в базе данных
+     * Обновляет запись в базе данных.
      */
     public function update()
     {
@@ -98,30 +103,30 @@ abstract class Model
         $columns = [];
         $data = [];
         foreach ($props as $name => $value) {
-            $data[':' . $name] = $value;
+            $data[':'.$name] = $value;
             if ('id' == $name) {
                 continue;
             }
-            $columns[] = $name . '=:' . $name;
+            $columns[] = $name.'=:'.$name;
         }
-        $sql = 'UPDATE ' . static::TABLE . ' SET ' . implode(',', $columns) . ' WHERE id=:id';
+        $sql = 'UPDATE '.static::TABLE.' SET '.implode(',', $columns).' WHERE id=:id';
         $db = new Db();
         $db->execute($sql, $data);
     }
 
     /**
-     * Удаляет запись в базе данных
+     * Удаляет запись в базе данных.
      */
     public function delete()
     {
         $data = [':id' => $this->id];
-        $sql = 'DELETE FROM ' . static::TABLE . ' WHERE id=:id';
+        $sql = 'DELETE FROM '.static::TABLE.' WHERE id=:id';
         $db = new Db();
         $db->execute($sql, $data);
     }
 
     /**
-     * Если есть данный id, метод обновит запись в базе данных, если нет - создаст новую
+     * Если есть данный id, метод обновит запись в базе данных, если нет - создаст новую.
      */
     public function save()
     {

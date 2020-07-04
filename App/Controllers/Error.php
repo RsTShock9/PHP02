@@ -2,8 +2,8 @@
 
 namespace App\Controllers;
 
-use \App\BaseController;
-use \App\Logger;
+use App\BaseController;
+use App\Logger;
 
 class Error extends BaseController
 {
@@ -19,6 +19,6 @@ class Error extends BaseController
     {
         Logger::logs($this->message);
         $this->view->error = $this->message;
-        $this->view->display(__DIR__ . '/../../Templates/error.php');
+        $this->view->display(__DIR__.'/../../Templates/error.php');
     }
 }

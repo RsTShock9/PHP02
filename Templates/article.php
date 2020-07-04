@@ -14,9 +14,9 @@
 <div>
     <h2><?php echo $this->article->title; ?></h2>
     <?php echo $this->article->content; ?><br><br>
-    <?php if (isset($this->article->author->name)) : ?>
+    <?php if (isset($this->article->author->name)) { ?>
         Автор: <?php echo $this->article->author->name ?>
-    <?php endif; ?>
+    <?php } ?>
 </div>
 
 </body>

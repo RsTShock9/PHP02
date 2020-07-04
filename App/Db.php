@@ -11,8 +11,9 @@ class Db
     public function __construct()
     {
         $config = Config::instance();
+
         try {
-            $this->dbh = new \PDO('pgsql:host=' . $config->data['db']['host'] . ';dbname=' .
+            $this->dbh = new \PDO('pgsql:host='.$config->data['db']['host'].';dbname='.
                 $config->data['db']['dbname'], $config->data['db']['user'], $config->data['db']['password']);
         } catch (\PDOException $ex) {
             throw new DbException('Ошибка соединения с базой данных');
@@ -25,14 +26,16 @@ class Db
         $sth->execute($data);
         $result = $sth->execute($data);
         if ($result == false) {
-            throw new DbException('Ошибка запроса ' . $sql);
+            throw new DbException('Ошибка запроса '.$sql);
         }
+
         return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
     }
 
     public function execute($query, $params = []): bool
     {
         $sth = $this->dbh->prepare($query);
+
         return $sth->execute($params);
     }
 

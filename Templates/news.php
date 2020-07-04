@@ -12,16 +12,16 @@
 <h2>Новости:</h2>
 
 <div>
-    <?php foreach ($this->articles as $article) : ?>
+    <?php foreach ($this->articles as $article) { ?>
         <div class="news">
             <h4><a href="/index/article/?id=<?php echo $article->id; ?>">
                     <?php echo $article->title; ?></a></h4>
             <?php echo $article->content; ?><br><br>
-            <?php if (isset($article->author->name)) : ?>
+            <?php if (isset($article->author->name)) { ?>
                 Автор статьи: <?php echo $article->author->name; ?><br><br>
-            <?php endif; ?>
+            <?php } ?>
         </div>
-    <?php endforeach; ?>
+    <?php } ?>
 </div>
 <br>
 

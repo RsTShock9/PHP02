@@ -14,8 +14,8 @@ class Article extends BaseController
         $article = \App\Models\Article::findById($_GET['id']);
         $this->view->article = $article;
         if (empty($article)) {
-            throw new NotFound404('Не существует записи с id = ' . $_GET['id']);
+            throw new NotFound404('Не существует записи с id = '.$_GET['id']);
         }
-        $this->view->display(__DIR__ . '/../../../Templates/Admin/article.php');
+        $this->view->display(__DIR__.'/../../../Templates/Admin/article.php');
     }
 }
