@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/autoload.php';
+require __DIR__ . '/App/autoload.php';
 
 use \App\Controllers\Index;
 use \App\Exceptions\DbException;
@@ -33,3 +33,6 @@ try {
     $ctrl = new Error($error);
     $ctrl->action();
 }
+/*
+$time = new \App\Classes\Time();
+$time->getData();*/

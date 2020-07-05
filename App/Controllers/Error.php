@@ -2,23 +2,24 @@
 
 namespace App\Controllers;
 
-use \App\BaseController;
-use \App\Logger;
+use App\Classes\BaseController;
+use \App\Classes\Logger;
 
 class Error extends BaseController
 {
-    public \Throwable $message;
+    public \Throwable $error;
 
-    public function __construct(\Throwable $error)
+    public function __construct(\Throwable $ex)
     {
         parent::__construct();
-        $this->message = $error;
+        $this->error = $ex;
     }
 
     public function __invoke()
     {
-        Logger::logs($this->message);
-        $this->view->error = $this->message;
+        $logger = new Logger($this->error);
+        $logger->log($this->error->getCode(), $this->error->getMessage());
+        $this->view->error = $this->error;
         $this->view->display(__DIR__ . '/../../Templates/error.php');
     }
 }

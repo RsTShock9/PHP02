@@ -2,23 +2,25 @@
 
 namespace App\Controllers\Admin;
 
-use \App\BaseController;
-use App\Logger;
+use App\Classes\BaseController;
+use App\Classes\Logger;
 
 class Errors extends BaseController
 {
-    public \Throwable $messages;
+    public \Throwable $errors;
 
-    public function __construct(\Throwable $errors)
+    public function __construct(\Throwable $ex)
     {
         parent::__construct();
-        $this->messages = $errors;
+        $this->errors = $ex;
     }
 
     public function __invoke()
     {
-        Logger::logsAdmin($this->messages);
-        $this->view->errors = $this->messages;
+
+        $logger = new Logger($this->errors);
+        $logger->log($this->errors->getCode(), $this->errors->getMessage());
+        $this->view->errors = $this->errors;
         $this->view->display(__DIR__ . '/../../../Templates/Admin/errors.php');
     }
 }

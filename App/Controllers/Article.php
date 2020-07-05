@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use \App\BaseController;
+use App\Classes\BaseController;
 use \App\Exceptions\NotFound404;
 
 class Article extends BaseController

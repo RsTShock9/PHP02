@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Classes;
 
 use App\Exceptions\MultiExceptions;
 use App\Exceptions\ValidationErrors;
@@ -12,8 +12,7 @@ abstract class Model
 
     public function fill($data)
     {
-        $errors = new MultiExceptions;
-
+        $errors = new MultiExceptions();
         foreach ($data as $name => $value) {
             try {
                 if ('id' == $name) {
@@ -131,4 +130,5 @@ abstract class Model
             $this->insert();
         }
     }
+
 }

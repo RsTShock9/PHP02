@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Classes;
 
 use App\Exceptions\DbException;
 
@@ -15,7 +15,7 @@ class Db
             $this->dbh = new \PDO('pgsql:host=' . $config->data['db']['host'] . ';dbname=' .
                 $config->data['db']['dbname'], $config->data['db']['user'], $config->data['db']['password']);
         } catch (\PDOException $ex) {
-            throw new DbException('Ошибка соединения с базой данных');
+            throw new DbException($ex->getMessage(), $ex->getCode());
         }
     }
 

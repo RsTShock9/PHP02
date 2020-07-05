@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Exceptions\ValidationErrors;
-use App\Model;
+use App\Classes\Model;
 
 class Article extends Model
 {

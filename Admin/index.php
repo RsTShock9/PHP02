@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../autoload.php';
+require __DIR__ . '/../App/autoload.php';
 
 use \App\Controllers\Admin\Index;
 use \App\Exceptions\MultiExceptions;

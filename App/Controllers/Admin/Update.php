@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Admin;
 
-use App\BaseController;
+use App\Classes\BaseController;
 use App\Models\Article;
 
 class Update extends BaseController
@@ -16,4 +16,3 @@ class Update extends BaseController
         exit();
     }
 }
-

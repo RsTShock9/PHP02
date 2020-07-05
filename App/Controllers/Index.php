@@ -2,8 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Classes\BaseController;
 use \App\Models\Article;
-use \App\BaseController;
 
 class Index extends BaseController
 {

@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Admin;
 
-use App\BaseController;
+use App\Classes\BaseController;
 use App\Exceptions\NotFound404;
 use App\Models\Author;
 

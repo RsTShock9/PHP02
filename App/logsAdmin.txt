@@ -1,0 +1,9 @@
+[2020-07-05 20:33:09]
+File - E:\PHP\PHP\OpenServer\domains\php2\App\Classes\Model.php
+Code - 0
+Message - 
+Trace - #0 E:\PHP\PHP\OpenServer\domains\php2\App\Controllers\Admin\Insert.php(13): App\Classes\Model->fill()
+#1 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\BaseController.php(22): App\Controllers\Admin\Insert->__invoke()
+#2 E:\PHP\PHP\OpenServer\domains\php2\Admin\index.php(32): App\Classes\BaseController->action()
+#3 {main}
+Level - 0

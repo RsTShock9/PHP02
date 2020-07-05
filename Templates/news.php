@@ -28,4 +28,7 @@
 <a href="/admin/index/?role=admin">Админ-панель</a>
 
 </body>
+<footer>
+    <?php  ?>
+</footer>
 </html>
