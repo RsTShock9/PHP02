@@ -1,6 +1,5 @@
 {
   "require": {
-    "phpunit/php-timer": "*",
     "psr/log": "*",
     "vitaliyklubkou/multiexceptions": "dev-master"
   }

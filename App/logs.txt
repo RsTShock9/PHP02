@@ -1,1 +1,7 @@
-
+[2020-07-05 22:04:23]
+File - E:\PHP\PHP\OpenServer\domains\php2\App\Controllers\Article.php
+Level - error
+Message - Не существует записи с id = 10222
+Trace - #0 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\BaseController.php(22): App\Controllers\Article->__invoke()
+#1 E:\PHP\PHP\OpenServer\domains\php2\index.php(28): App\Classes\BaseController->action()
+#2 {main}

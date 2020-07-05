@@ -14,8 +14,11 @@ class Db
         try {
             $this->dbh = new \PDO('pgsql:host=' . $config->data['db']['host'] . ';dbname=' .
                 $config->data['db']['dbname'], $config->data['db']['user'], $config->data['db']['password']);
-        } catch (\PDOException $ex) {
-            throw new DbException($ex->getMessage(), $ex->getCode());
+        } catch (\PDOException $e) {
+            $exc = new DbException('Нет соединения с базой данных');
+            $log = new Logger($exc);
+            $log->emergency($exc);
+            throw $exc;
         }
     }
 
@@ -25,7 +28,10 @@ class Db
         $sth->execute($data);
         $result = $sth->execute($data);
         if ($result == false) {
-            throw new DbException('Ошибка запроса ' . $sql);
+            $exc = new DbException('Ошибка при выполнении запроса ' . $sql);
+            $log = new Logger($exc);
+            $log->emergency($exc);
+            throw $exc;
         }
         return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
     }

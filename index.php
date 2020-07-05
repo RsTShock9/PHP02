@@ -33,6 +33,3 @@ try {
     $ctrl = new Error($error);
     $ctrl->action();
 }
-/*
-$time = new \App\Classes\Time();
-$time->getData();*/
