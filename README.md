@@ -1,3 +1,7 @@
+Ссылка на MultiExceptions 
+https://github.com/RsTShock9/MultiExceptions
+https://packagist.org/packages/vitaliyklubkou/multiexceptions
+
 1)Проверьте свой код на соответствие стандартам PSR-1 и PSR-2. При необходимости - исправьте.
 
 2)Подключите с помощью composer на выбор к своему проекту одну из указанных библиотек:
