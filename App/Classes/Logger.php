@@ -7,20 +7,21 @@ use Psr\Log\LoggerInterface;
 
 class Logger extends AbstractLogger implements LoggerInterface
 {
-    protected \Throwable $exception;
+    use Singleton;
 
-    public function __construct(\Throwable $ex)
+    protected array $logFile;
+
+    public function __construct()
     {
-        $this->exception = $ex;
+        $config = Config::instance()->data;
+        $this->logFile = $config['errors'];
     }
 
     public function log($level, $message, array $context = [])
     {
-        $message = "\n" . '[' . date('Y-m-d H:i:s') . '] '
-            . "\n" . 'File - ' . $this->exception->getFile()
-            . "\n" . 'Level - ' . $level
-            . "\n" . 'Message - ' . $this->exception->getMessage()
-            . "\n" . 'Trace - ' . $this->exception->getTraceAsString();
-        file_put_contents(__DIR__ . '/../logs.txt', $message . PHP_EOL, FILE_APPEND);
+        $log = "\n" . '[Date: ' . date('Y-m-d H:i:s') . '] ' .
+            "\n" . 'Level: ' . ucfirst($level) .
+            "\n" . 'Message: ' . $message;
+        file_put_contents($this->logFile['log'], $log . PHP_EOL, FILE_APPEND);
     }
 }

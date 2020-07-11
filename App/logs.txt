@@ -18,3 +18,19 @@ Stack trace:
 #2 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\BaseController.php(22): App\Controllers\Index->__invoke()
 #3 E:\PHP\PHP\OpenServer\domains\php2\index.php(28): App\Classes\BaseController->action()
 #4 {main}
+
+[Date: 2020-07-11 16:38:58] 
+Level: Error
+Message: App\Exceptions\NotFound404: Не существует записи с id = 111111 in E:\PHP\PHP\OpenServer\domains\php2\App\Controllers\Admin\Article.php:18
+Stack trace:
+#0 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\BaseController.php(22): App\Controllers\Admin\Article->__invoke()
+#1 E:\PHP\PHP\OpenServer\domains\php2\Admin\index.php(32): App\Classes\BaseController->action()
+#2 {main}
+
+[Date: 2020-07-11 16:39:19] 
+Level: Error
+Message: App\Exceptions\NotFound404: Не существует записи с id = 10123123 in E:\PHP\PHP\OpenServer\domains\php2\App\Controllers\Article.php:16
+Stack trace:
+#0 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\BaseController.php(22): App\Controllers\Article->__invoke()
+#1 E:\PHP\PHP\OpenServer\domains\php2\index.php(28): App\Classes\BaseController->action()
+#2 {main}

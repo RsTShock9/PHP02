@@ -84,7 +84,7 @@ abstract class Model
         $sql = 'INSERT INTO ' . static::TABLE . ' (' . implode(',', $columns) . ') 
         VALUES (' . implode(',', $bindings) . ')';
         $db = new Db();
-        $a = $db->execute($sql, $data);
+        $db->execute($sql, $data);
         $this->id = $db->lastId();
     }
 
@@ -130,5 +130,4 @@ abstract class Model
             $this->insert();
         }
     }
-
 }
