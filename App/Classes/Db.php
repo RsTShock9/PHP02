@@ -16,8 +16,7 @@ class Db
                 $config->data['db']['dbname'], $config->data['db']['user'], $config->data['db']['password']);
         } catch (\PDOException $e) {
             $exc = new DbException('Нет соединения с базой данных');
-            $log = new Logger($exc);
-            $log->emergency($exc);
+            Log::instance()->emergency($exc);
             throw $exc;
         }
     }

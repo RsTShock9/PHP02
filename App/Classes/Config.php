@@ -2,21 +2,16 @@
 
 namespace App\Classes;
 
+use App\Classes\Singleton;
+
 class Config
 {
-    protected static $instance = null;
+    use Singleton;
+
     public $data = [];
 
     protected function __construct()
     {
         $this->data = include __DIR__ . '/../config.php';
-    }
-
-    public static function instance(): object
-    {
-        if (null === self::$instance) {
-            self::$instance = new self;
-        }
-        return self::$instance;
     }
 }

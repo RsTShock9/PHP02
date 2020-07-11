@@ -1,15 +1,20 @@
-[2020-07-05 22:04:23]
-File - E:\PHP\PHP\OpenServer\domains\php2\App\Controllers\Article.php
-Level - error
-Message - Не существует записи с id = 10222
-Trace - #0 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\BaseController.php(22): App\Controllers\Article->__invoke()
-#1 E:\PHP\PHP\OpenServer\domains\php2\index.php(28): App\Classes\BaseController->action()
-#2 {main}
 
-[2020-07-05 22:17:12] 
-File - E:\PHP\PHP\OpenServer\domains\php2\App\Controllers\Article.php
-Level - error
-Message - Не существует записи с id = 103232
-Trace - #0 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\BaseController.php(22): App\Controllers\Article->__invoke()
-#1 E:\PHP\PHP\OpenServer\domains\php2\index.php(28): App\Classes\BaseController->action()
-#2 {main}
+[Date: 2020-07-09 13:09:09] 
+Level: Emergency
+Message: App\Exceptions\DbException: Нет соединения с базой данных in E:\PHP\PHP\OpenServer\domains\php2\App\Classes\Db.php:18
+Stack trace:
+#0 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\Model.php(65): App\Classes\Db->__construct()
+#1 E:\PHP\PHP\OpenServer\domains\php2\App\Controllers\Index.php(12): App\Classes\Model::getLastRecords()
+#2 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\BaseController.php(22): App\Controllers\Index->__invoke()
+#3 E:\PHP\PHP\OpenServer\domains\php2\index.php(28): App\Classes\BaseController->action()
+#4 {main}
+
+[Date: 2020-07-09 14:18:30] 
+Level: Emergency
+Message: App\Exceptions\DbException: Нет соединения с базой данных in E:\PHP\PHP\OpenServer\domains\php2\App\Classes\Db.php:18
+Stack trace:
+#0 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\Model.php(65): App\Classes\Db->__construct()
+#1 E:\PHP\PHP\OpenServer\domains\php2\App\Controllers\Index.php(12): App\Classes\Model::getLastRecords()
+#2 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\BaseController.php(22): App\Controllers\Index->__invoke()
+#3 E:\PHP\PHP\OpenServer\domains\php2\index.php(28): App\Classes\BaseController->action()
+#4 {main}
