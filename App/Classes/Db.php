@@ -24,7 +24,6 @@ class Db
     public function query($sql, $class, $data = []): array
     {
         $sth = $this->dbh->prepare($sql);
-        $sth->execute($data);
         $result = $sth->execute($data);
         if ($result == false) {
             $e = new DbException('Ошибка при выполнении запроса ' . $sql);
@@ -32,6 +31,21 @@ class Db
             throw $e;
         }
         return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
+    }
+
+    public function queryEach($sql, $class, $data = []): iterable
+    {
+        $sth = $this->dbh->prepare($sql);
+        $result = $sth->execute($data);
+        if ($result == false) {
+            $e = new DbException('Ошибка при выполнении запроса ' . $sql);
+            Logger::instance()->emergency($e);
+            throw $e;
+        }
+        $sth->setFetchMode(\PDO::FETCH_CLASS, $class);
+        while ($row = $sth->fetch()) {
+            yield $row;
+        }
     }
 
     public function execute($query, $params = []): bool

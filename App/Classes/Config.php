@@ -8,7 +8,7 @@ class Config
 {
     use Singleton;
 
-    public $data = [];
+    public array $data = [];
 
     protected function __construct()
     {

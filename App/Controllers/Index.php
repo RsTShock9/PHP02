@@ -9,7 +9,7 @@ class Index extends BaseController
 {
     public function __invoke()
     {
-        $this->view->articles = Article::getLastRecords(4);
+        $this->view->articles = Article::findAll();
         $this->view->display(__DIR__ . '/../../Templates/news.php');
     }
 }

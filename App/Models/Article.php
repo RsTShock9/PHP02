@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Classes\Logger;
 use App\Exceptions\ValidationErrors;
 use App\Classes\Model;
 
@@ -41,13 +42,19 @@ class Article extends Model
     public function validateTitle($title)
     {
         if (strlen($title) > 100) {
-            throw new ValidationErrors('Заголовок должен быть не более 100 символов');
+            $e = new ValidationErrors('Заголовок должен быть не более 100 символов');
+            Logger::instance()->error($e);
+            throw $e;
         }
         if (empty($title)) {
-            throw new ValidationErrors('Заголовок не должен быть пустым');
+            $e = new ValidationErrors('Заголовок не должен быть пустым');
+            Logger::instance()->error($e);
+            throw $e;
         }
-        if (!ctype_upper($title)) {
-            throw new ValidationErrors('Заголовок должен начинаться с большой буквы');
+        if (!ctype_digit(substr($title, 0, 1)) && !ctype_upper(substr($title, 0, 1))) {
+            $e = new ValidationErrors('Заголовок должен начинаться с большой буквы');
+            Logger::instance()->error($e);
+            throw $e;
         }
         return $title;
     }
@@ -55,7 +62,9 @@ class Article extends Model
     public function validateContent($content)
     {
         if (empty($content)) {
-            throw new ValidationErrors('Текст статьи не должен быть пустым');
+            $e = new ValidationErrors('Текст статьи не должен быть пустым');
+            Logger::instance()->error($e);
+            throw $e;
         }
         return $content;
     }
@@ -63,7 +72,9 @@ class Article extends Model
     public function validateAuthor_id($author_id)
     {
         if (!ctype_digit($author_id)) {
-            throw new ValidationErrors('id автора должно быть числом');
+            $e = new ValidationErrors('id автора должно быть числом');
+            Logger::instance()->error($e);
+            throw $e;
         }
         return $author_id;
     }

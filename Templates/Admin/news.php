@@ -27,19 +27,22 @@
     </form>
 </div>
 
-<table>
-    <?php foreach ($this->articles as $article) : ?>
+<table class="admin">
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Author</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <?php foreach ($this->articles as $article): ?>
         <tr>
-            <td>
-                <a href="/admin/article/?id=<?php echo $article->id; ?>">Редактировать</a>
-                <a href="/admin/delete/?id=<?php echo $article->id; ?>">Удалить</a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <h3><?php echo $article->title; ?></h3>
-                <hr>
-            </td>
+            <?php foreach ($article as $row): ?>
+                <td><?php echo $row; ?></td>
+            <?php endforeach; ?>
+            <td><a href="/admin/article/?id=<?php echo $article[0]; ?>">Редактировать</a></td>
+            <td><a href="/admin/delete/?id=<?php echo $article[0]; ?>">Удалить</a></td>
         </tr>
     <?php endforeach; ?>
 </table>

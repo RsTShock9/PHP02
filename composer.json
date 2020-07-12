@@ -1,7 +1,7 @@
 {
   "require": {
     "psr/log": "*",
-    "vitaliyklubkou/multiexceptions": "dev-master"
-
+    "vitaliyklubkou/multiexceptions": "dev-master",
+    "ext-ctype": "*"
   }
 }

@@ -10,7 +10,12 @@ abstract class Model
     protected const TABLE = '';
     public int $id;
 
-    public function fill($data)
+    /**
+     * @param array $data
+     * @throws MultiExceptions
+     * Заполняет свойства модели данными, валидируя их
+     */
+    public function fill(array $data)
     {
         $errors = new MultiExceptions();
         foreach ($data as $name => $value) {
@@ -32,20 +37,22 @@ abstract class Model
     }
 
     /**
-     * @return array возвращает массив объектов класса
+     * @return iterable генератор
+     * @throws \App\Exceptions\DbException
+     *
      */
-    public static function findAll(): array
+    public static function findAll(): iterable
     {
         $db = new Db();
         $sql = 'SELECT * FROM ' . static::TABLE . ' ORDER BY id';
-        return $db->query($sql, static::class);
+        return $db->queryEach($sql, static::class, []);
     }
 
     /**
-     * @param $id
+     * @param int $id
      * @return object|mixed возвращает одну запись из таблицы
      */
-    public static function findById($id)
+    public static function findById(int $id)
     {
         $db = new Db();
         $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE :id=id';

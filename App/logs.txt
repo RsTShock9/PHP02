@@ -34,3 +34,43 @@ Stack trace:
 #0 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\BaseController.php(22): App\Controllers\Article->__invoke()
 #1 E:\PHP\PHP\OpenServer\domains\php2\index.php(28): App\Classes\BaseController->action()
 #2 {main}
+
+[Date: 2020-07-12 14:09:12] 
+Level: Emergency
+Message: App\Exceptions\DbException: Ошибка при выполнении запроса SELECT * FROM articles WHERE :id=id in E:\PHP\PHP\OpenServer\domains\php2\App\Classes\Db.php:29
+Stack trace:
+#0 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\Model.php(49): App\Classes\Db->query()
+#1 E:\PHP\PHP\OpenServer\domains\php2\App\Controllers\Admin\Article.php(15): App\Classes\Model::findById()
+#2 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\BaseController.php(22): App\Controllers\Admin\Article->__invoke()
+#3 E:\PHP\PHP\OpenServer\domains\php2\Admin\index.php(32): App\Classes\BaseController->action()
+#4 {main}
+
+[Date: 2020-07-12 16:20:16] 
+Level: Error
+Message: App\Exceptions\ValidationErrors: Текст статьи не должен быть пустым in E:\PHP\PHP\OpenServer\domains\php2\App\Models\Article.php:59
+Stack trace:
+#0 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\Model.php(27): App\Models\Article->validateContent()
+#1 E:\PHP\PHP\OpenServer\domains\php2\App\Controllers\Admin\Insert.php(13): App\Classes\Model->fill()
+#2 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\BaseController.php(22): App\Controllers\Admin\Insert->__invoke()
+#3 E:\PHP\PHP\OpenServer\domains\php2\Admin\index.php(32): App\Classes\BaseController->action()
+#4 {main}
+
+[Date: 2020-07-12 16:22:22] 
+Level: Error
+Message: App\Exceptions\ValidationErrors: Заголовок не должен быть пустым in E:\PHP\PHP\OpenServer\domains\php2\App\Models\Article.php:50
+Stack trace:
+#0 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\Model.php(27): App\Models\Article->validateTitle()
+#1 E:\PHP\PHP\OpenServer\domains\php2\App\Controllers\Admin\Insert.php(13): App\Classes\Model->fill()
+#2 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\BaseController.php(22): App\Controllers\Admin\Insert->__invoke()
+#3 E:\PHP\PHP\OpenServer\domains\php2\Admin\index.php(32): App\Classes\BaseController->action()
+#4 {main}
+
+[Date: 2020-07-12 16:22:22] 
+Level: Error
+Message: App\Exceptions\ValidationErrors: Текст статьи не должен быть пустым in E:\PHP\PHP\OpenServer\domains\php2\App\Models\Article.php:65
+Stack trace:
+#0 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\Model.php(27): App\Models\Article->validateContent()
+#1 E:\PHP\PHP\OpenServer\domains\php2\App\Controllers\Admin\Insert.php(13): App\Classes\Model->fill()
+#2 E:\PHP\PHP\OpenServer\domains\php2\App\Classes\BaseController.php(22): App\Controllers\Admin\Insert->__invoke()
+#3 E:\PHP\PHP\OpenServer\domains\php2\Admin\index.php(32): App\Classes\BaseController->action()
+#4 {main}
